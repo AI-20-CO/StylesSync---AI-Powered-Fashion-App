@@ -1,0 +1,21 @@
+# FastAPI Core
+fastapi==0.111.0
+uvicorn[standard]==0.30.1
+pydantic==2.5.0
+python-multipart==0.0.6
+
+# Machine Learning
+torch==2.7.1
+torchvision==0.22.1
+numpy==1.26.4
+scikit-learn==1.5.1
+pandas>=1.3.0
+statsmodels>=0.13.0
+
+# Image Processing
+pillow==11.0.0
+opencv-python==4.8.1.78
+
+# Additional
+python-dotenv==1.0.0
+requests==2.31.0 

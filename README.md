@@ -203,30 +203,8 @@ npx react-native build-android
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🎯 Roadmap
 
-- [ ] AR try-on features
-- [ ] Social sharing and reviews
-- [ ] Advanced analytics dashboard
-- [ ] Web application version
-- [ ] International shipping integration
-- [ ] Sustainability scoring
 
-## 📞 Support
 
-For support, email support@stylesync.com or create an issue in this repository.
-
-## 🙏 Acknowledgments
-
-- React Native community
-- Supabase team
-- Stripe developers
-- AI/ML research community
-
----
-
-**Made with ❤️ by the StylesSync Team**

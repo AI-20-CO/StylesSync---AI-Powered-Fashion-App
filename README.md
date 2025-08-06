@@ -10,6 +10,10 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 ## 📑 Table of Contents
 - [Demo](#-demo)
 - [Features](#-features)
+  - [AI-Powered Intelligence](#-ai-powered-intelligence)
+  - [Multi-Modal Shopping](#-multi-modal-shopping)
+  - [User Experience](#-user-experience)
+  - [Secure Payments](#-secure-payments)
 - [Tech Stack](#-tech-stack)
   - [Frontend](#frontend)
   - [Backend & Services](#backend--services)
@@ -33,6 +37,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
   - [Mobile App](#mobile-app)
   - [AI Services](#ai-services)
 - [Contributing](#-contributing)
+
 
 ## Demo
 

@@ -8,11 +8,8 @@
 StylesSync is a comprehensive fashion platform that revolutionizes how people discover, buy, sell, and rent fashion items. Our AI-powered system provides personalized recommendations based on your style preferences and skin tone, while our integrated marketplace enables seamless peer-to-peer transactions.
 
 ## 📑 Table of Contents
+- [Demo](#-Demo)
 - [Features](#-features)
-  - [AI-Powered Intelligence](#-ai-powered-intelligence)
-  - [Multi-Modal Shopping](#-multi-modal-shopping)
-  - [User Experience](#-user-experience)
-  - [Secure Payments](#-secure-payments)
 - [Tech Stack](#-tech-stack)
   - [Frontend](#frontend)
   - [Backend & Services](#backend--services)
@@ -37,6 +34,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
   - [AI Services](#ai-services)
 - [Contributing](#-contributing)
 
+## Demo
 
 [▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 

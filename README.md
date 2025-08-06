@@ -7,6 +7,37 @@
 
 StylesSync is a comprehensive fashion platform that revolutionizes how people discover, buy, sell, and rent fashion items. Our AI-powered system provides personalized recommendations based on your style preferences and skin tone, while our integrated marketplace enables seamless peer-to-peer transactions.
 
+## 📑 Table of Contents
+- [Features](#-features)
+  - [AI-Powered Intelligence](#-ai-powered-intelligence)
+  - [Multi-Modal Shopping](#-multi-modal-shopping)
+  - [User Experience](#-user-experience)
+  - [Secure Payments](#-secure-payments)
+- [Tech Stack](#-tech-stack)
+  - [Frontend](#frontend)
+  - [Backend & Services](#backend--services)
+  - [AI & Machine Learning](#ai--machine-learning)
+- [Getting Started](#-getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Setup](#environment-setup)
+  - [Database Setup](#database-setup)
+  - [Start the Application](#start-the-application)
+- [App Structure](#-app-structure)
+- [Key Screens](#-key-screens)
+- [AI Features Deep Dive](#-ai-features-deep-dive)
+  - [Skin Tone Matching](#skin-tone-matching)
+  - [Size Prediction](#size-prediction)
+  - [Recommendation Engine](#recommendation-engine)
+- [API Integration](#-api-integration)
+  - [Supabase Schema](#supabase-schema)
+  - [External APIs](#external-apis)
+- [Deployment](#-deployment)
+  - [Mobile App](#mobile-app)
+  - [AI Services](#ai-services)
+- [Contributing](#-contributing)
+
+
 [▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 
 ## ✨ Features

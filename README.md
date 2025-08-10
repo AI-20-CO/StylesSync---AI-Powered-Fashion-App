@@ -1,4 +1,4 @@
-# StylesSync - AI-Powered Fashion Platform 🎨
+# StylesSync - AI-Powered Fashion Platform 
 
 [![React Native](https://img.shields.io/badge/React%20Native-0.72+-blue.svg)](https://reactnative.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-4.9+-blue.svg)](https://www.typescriptlang.org/)

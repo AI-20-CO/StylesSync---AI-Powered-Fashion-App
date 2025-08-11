@@ -17,7 +17,6 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-- [App Structure](#app-structure)
 - [Key Screens](#key-screens)
 - [AI Features Deep Dive](#ai-features-deep-dive)
   - [Skin Tone Matching](#skin-tone-matching)

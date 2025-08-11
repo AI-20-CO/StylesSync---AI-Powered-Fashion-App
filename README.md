@@ -11,6 +11,13 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 ## 📑 Table of Contents
 - [Demo](#demo)
 - [Features](#features)
+  - [AI-Powered Intelligence](#ai-powered-intelligence)
+  - [Multi-Modal Shopping](#multi-modal-shopping)
+  - [User Experience](#user-experience)
+  - [Secure Payments](#secure-payments)
+- [System Architecture Diagram](#system-architecture-diagram)
+- [Sequence Diagram](#sequence-diagram)
+- [AI-Architecture Diagram (Conceptual)](#ai-architecture-diagram-conceptual)
 - [Tech Stack](#tech-stack)
   - [Frontend](#frontend)
   - [Backend & Services](#backend--services)
@@ -18,6 +25,9 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+    - [Database Setup](#database-setup)
+    - [Stripe Setup](#stripe-setup)
+    - [Clerk Setup](#clerk-setup)
 - [Key Screens](#key-screens)
 - [AI Features Deep Dive](#ai-features-deep-dive)
   - [Skin Tone Matching](#skin-tone-matching)
@@ -26,7 +36,9 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [API Integration](#api-integration)
   - [Supabase Schema](#supabase-schema)
   - [External APIs](#external-apis)
-- [Contributing](#contributing)                                                                                                                                                                                                                                                                                      
+- [Contributing](#contributing)
+
+                                                                                   
 ## Demo
 
 [▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
@@ -56,6 +68,18 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - **Multiple Payment Methods**: Cards, digital wallets, and more
 - **Seller Earnings**: Transparent earnings tracking and payouts
 - **Voucher System**: Discount codes and promotional offers
+
+## System Architecture Diagram 
+
+<img width="744" height="627" alt="Screenshot 2025-08-11 at 10 29 45 AM" src="https://github.com/user-attachments/assets/b467de45-8fe7-44e2-a6c7-ea998201f8c8" />
+
+## Sequence Diagram 
+
+[Sequence Diagram on eraser.io](https://app.eraser.io/workspace/0h4mx0Uuc9nXbhlouwQW)
+
+## AI-Architecture Diagram (Conceptual)
+
+[AI-Architecture Diagram (Conceptual) on eraser.io](https://app.eraser.io/workspace/QwHcJwWs7cWxnZPShuDW)
 
 ## Tech Stack
 
@@ -219,7 +243,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 | public       | sync\_clerk\_user\_custom   | \`\`\`sql CREATE OR REPLACE FUNCTION public.sync\_clerk\_user\_custom( p\_clerk\_user\_id text, p\_email text, p\_password text DEFAULT 'clerk\_managed'::text, p\_phone text DEFAULT NULL::text, p\_first\_name text DEFAULT NULL::text, p\_last\_name text DEFAULT NULL::text, p\_profile\_image\_url text DEFAULT NULL::text, p\_is\_social\_login boolean DEFAULT false ) RETURNS void LANGUAGE plpgsql AS \$function\$ DECLARE v\_username TEXT; v\_cart\_id INTEGER; v\_username\_counter INTEGER := 0; v\_final\_username TEXT; BEGIN v\_username := split\_part(p\_email, '@', 1); v\_final\_username := v\_username; WHILE EXISTS (SELECT 1 FROM users WHERE username = v\_final\_username) LOOP v\_username\_counter := v\_username\_counter + 1; v\_final\_username := v\_username                                                                                                                                                                                                                                                                |   | v\_username\_counter::TEXT; END LOOP; INSERT INTO users ( user\_id, clerk\_user\_id, username, email, password\_hash, phone, first\_name, last\_name, profile\_image\_url, is\_social\_login, updated\_at ) VALUES ( p\_clerk\_user\_id, p\_clerk\_user\_id, v\_final\_username, p\_email, p\_password, p\_phone, p\_first\_name, p\_last\_name, p\_profile\_image\_url, p\_is\_social\_login, CURRENT\_TIMESTAMP ) ON CONFLICT (user\_id) DO UPDATE SET email = EXCLUDED.email, phone = COALESCE(EXCLUDED.phone, users.phone), first\_name = EXCLUDED.first\_name, last\_name = EXCLUDED.last\_name, profile\_image\_url = EXCLUDED.profile\_image\_url, is\_social\_login = EXCLUDED.is\_social\_login, updated\_at = CURRENT\_TIMESTAMP; SELECT cart\_id INTO v\_cart\_id FROM carts WHERE user\_id = p\_clerk\_user\_id LIMIT 1; IF v\_cart\_id IS NULL THEN INSERT INTO carts (user\_id, created\_at) VALUES (p\_clerk\_user\_id, CURRENT\_TIMESTAMP); END IF; EXCEPTION WHEN OTHERS THEN RAISE EXCEPTION 'Error in sync\_clerk\_user\_custom: %', SQLERRM; END; \$function\$ \`\`\` |
 | public       | update\_updated\_at\_column | `sql CREATE OR REPLACE FUNCTION public.update_updated_at_column() RETURNS trigger LANGUAGE plpgsql AS $function$ BEGIN NEW.updated_at = NOW(); RETURN NEW; END; $function$ `                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
-4. **Stripe Setup**
+### 4. **Stripe Setup**
    
 To enable secure payment processing with Stripe in your Supabase Edge Functions:
 
@@ -402,7 +426,6 @@ From your project root:
 supabase functions deploy payment-intent
 supabase functions deploy stripe-webhook
 ```
-
 
 ## Key Screens
 

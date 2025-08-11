@@ -32,35 +32,35 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [Contributing](#contributing)                                                                                                                                                                                                                                                                                      
 ## Demo
 
-[▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
+[Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 
-## ✨ Features
+## Features
 
-### 🤖 AI-Powered Intelligence
+### AI-Powered Intelligence
 - **Smart Recommendations**: AI analyzes your preferences to suggest perfect fashion matches
 - **Skin Tone Matching**: Advanced computer vision to match clothing colors with your skin tone
 - **Size Prediction**: AI-driven size recommendations based on body measurements and fit data
 - **Style Learning**: Algorithm continuously learns from your interactions and preferences
 
-### 🛍️ Multi-Modal Shopping
+### Multi-Modal Shopping
 - **Traditional Shopping**: Browse curated fashion collections
 - **P2P Marketplace**: Buy and sell pre-owned fashion items
 - **Rental Service**: Rent designer pieces for special occasions
 - **Wishlist & Cart**: Save favorites and manage purchases seamlessly
 
-### 📱 User Experience
+### User Experience
 - **Dual Mode Interface**: Switch between Buyer and Seller modes
 - **Real-time Notifications**: Stay updated on orders, offers, and recommendations
 - **Advanced Search**: Find exactly what you're looking for with smart filters
 - **Order Management**: Track purchases, sales, and rental history
 
-### 💳 Secure Payments
+### Secure Payments
 - **Stripe Integration**: Secure payment processing
 - **Multiple Payment Methods**: Cards, digital wallets, and more
 - **Seller Earnings**: Transparent earnings tracking and payouts
 - **Voucher System**: Discount codes and promotional offers
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 - **React Native** - Cross-platform mobile development
@@ -80,7 +80,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - **Size Prediction** - Body measurement analysis
 - **Image Processing** - Product image optimization
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+ 
@@ -561,7 +561,7 @@ stylesync/
 └── components/           # Shared components
 ```
 
-## 🎨 Key Screens
+## Key Screens
 
 - **Home**: AI-powered fashion recommendations
 - **P2P Marketplace**: Buy/sell pre-owned items
@@ -570,7 +570,7 @@ stylesync/
 - **Orders**: Purchase and sales management
 - **Profile**: User settings and seller dashboard
 
-## 🤖 AI Features Deep Dive
+## AI Features Deep Dive
 
 ### Skin Tone Matching
 - Real-time camera analysis for skin tone detection
@@ -587,7 +587,7 @@ stylesync/
 - Content-based filtering using item attributes
 - Hybrid approach combining multiple ML techniques
 
-## 🔧 API Integration
+## API Integration
 
 ### Supabase Schema
 - Users and authentication
@@ -601,7 +601,7 @@ stylesync/
 - Clerk for user management
 - Custom AI APIs for ML features
 
-## 🚀 Deployment
+## Deployment
 
 ### Mobile App
 ```bash
@@ -619,7 +619,7 @@ npx react-native build-android
 # Set up domain and SSL
 ```
 
-## 🤝 Contributing
+## Contributing
 
 1. Fork the repository
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)

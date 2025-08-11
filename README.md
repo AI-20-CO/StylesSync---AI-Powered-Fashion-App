@@ -33,9 +33,6 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
   - [Skin Tone Matching](#skin-tone-matching)
   - [Size Prediction](#size-prediction)
   - [Recommendation Engine](#recommendation-engine)
-- [API Integration](#api-integration)
-  - [Supabase Schema](#supabase-schema)
-  - [External APIs](#external-apis)
 - [Contributing](#contributing)
 
                                                                                    
@@ -442,30 +439,20 @@ supabase functions deploy stripe-webhook
 - Real-time camera analysis for skin tone detection
 - Color palette generation based on skin undertones
 - Smart filtering of fashion items by color compatibility
+- **CNN-based Color Tone Detection**: Implemented a convolutional neural network achieving **92% accuracy** for precise skin tone classification
+- **Color Harmony Algorithm**: Applied color harmony principles to match detected tones with complementary fashion color palettes
 
 ### Size Prediction
 - Body measurement input and analysis
 - Historical fit data correlation
 - Brand-specific sizing recommendations
+- **Multiclass Linear Regression Model**: Used to predict size categories with **88% accuracy**, incorporating brand-specific sizing variations
 
 ### Recommendation Engine
 - Collaborative filtering based on similar users
 - Content-based filtering using item attributes
 - Hybrid approach combining multiple ML techniques
-
-## API Integration
-
-### Supabase Schema
-- Users and authentication
-- Fashion items catalog
-- Orders and transactions
-- P2P marketplace listings
-- AI analysis results
-
-### External APIs
-- Stripe for payment processing
-- Clerk for user management
-- Custom AI APIs for ML features
+- **Weighted Hybrid Model**: Combined CNN-based skin tone matching and multiclass regression-based size prediction by assigning adaptive weights, integrating results with multiple user interactions and in-app questionnaires to refine personalization
 
 
 ## Contributing

@@ -29,9 +29,122 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [Deployment](#deployment)
   - [Mobile App](#mobile-app)
   - [AI Services](#ai-services)
-- [Contributing](#contributing)
+- [Contributing](#contributing)                                                                                                                                                                                                                                                                                      
+## Demo
 
+[▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 
+## ✨ Features
+
+### 🤖 AI-Powered Intelligence
+- **Smart Recommendations**: AI analyzes your preferences to suggest perfect fashion matches
+- **Skin Tone Matching**: Advanced computer vision to match clothing colors with your skin tone
+- **Size Prediction**: AI-driven size recommendations based on body measurements and fit data
+- **Style Learning**: Algorithm continuously learns from your interactions and preferences
+
+### 🛍️ Multi-Modal Shopping
+- **Traditional Shopping**: Browse curated fashion collections
+- **P2P Marketplace**: Buy and sell pre-owned fashion items
+- **Rental Service**: Rent designer pieces for special occasions
+- **Wishlist & Cart**: Save favorites and manage purchases seamlessly
+
+### 📱 User Experience
+- **Dual Mode Interface**: Switch between Buyer and Seller modes
+- **Real-time Notifications**: Stay updated on orders, offers, and recommendations
+- **Advanced Search**: Find exactly what you're looking for with smart filters
+- **Order Management**: Track purchases, sales, and rental history
+
+### 💳 Secure Payments
+- **Stripe Integration**: Secure payment processing
+- **Multiple Payment Methods**: Cards, digital wallets, and more
+- **Seller Earnings**: Transparent earnings tracking and payouts
+- **Voucher System**: Discount codes and promotional offers
+
+## 🛠️ Tech Stack
+
+### Frontend
+- **React Native** - Cross-platform mobile development
+- **TypeScript** - Type-safe development
+- **React Navigation** - Navigation management
+- **Expo** - Development and build tooling
+
+### Backend & Services
+- **Supabase** - Database, authentication, and storage
+- **Clerk** - Advanced authentication and user management
+- **Stripe** - Payment processing
+- **Python FastAPI** - AI services and machine learning
+
+### AI & Machine Learning
+- **Computer Vision** - Skin tone analysis and matching
+- **Recommendation Engine** - Personalized fashion suggestions
+- **Size Prediction** - Body measurement analysis
+- **Image Processing** - Product image optimization
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Node.js 18+ 
+- React Native development environment
+- iOS Simulator or Android Emulator
+- Supabase account
+- Stripe account (for payments)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/stylesync.git
+   cd stylesync
+   ```
+
+2. **Install dependencies**
+   ```bash
+   # Main app dependencies
+   npm install
+   
+   # AI API dependencies
+   cd stylesync/ai_api
+   pip install -r requirements.txt
+   cd ../..
+   ```
+
+3. **Environment Setup**
+   
+   Create `.env` file in the root directory:
+   ```env
+   # Supabase Configuration
+   SUPABASE_URL=your_supabase_url
+   SUPABASE_ANON_KEY=your_supabase_anon_key
+   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+   
+   # Clerk Authentication
+   CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+   
+   # Stripe Payments
+   STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+   STRIPE_SECRET_KEY=your_stripe_secret_key
+   ```
+
+4. **Database Setup**
+
+| table_name             |
+| ---------------------- |
+| cart_items             |
+| carts                  |
+| deliveries             |
+| detailed_fashion_items |
+| fashion_items          |
+| order_items            |
+| orders                 |
+| payments               |
+| product_likes          |
+| products               |
+| roles                  |
+| seller_earnings        |
+| seller_profiles        |
+| user_addresses         |
+| user_interactions      |
+| users                  |
 
 | create_statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -409,123 +522,7 @@ BEGIN
     RETURN NEW;
 END;
 $function$
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-## Demo
-
-[▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
-
-## ✨ Features
-
-### 🤖 AI-Powered Intelligence
-- **Smart Recommendations**: AI analyzes your preferences to suggest perfect fashion matches
-- **Skin Tone Matching**: Advanced computer vision to match clothing colors with your skin tone
-- **Size Prediction**: AI-driven size recommendations based on body measurements and fit data
-- **Style Learning**: Algorithm continuously learns from your interactions and preferences
-
-### 🛍️ Multi-Modal Shopping
-- **Traditional Shopping**: Browse curated fashion collections
-- **P2P Marketplace**: Buy and sell pre-owned fashion items
-- **Rental Service**: Rent designer pieces for special occasions
-- **Wishlist & Cart**: Save favorites and manage purchases seamlessly
-
-### 📱 User Experience
-- **Dual Mode Interface**: Switch between Buyer and Seller modes
-- **Real-time Notifications**: Stay updated on orders, offers, and recommendations
-- **Advanced Search**: Find exactly what you're looking for with smart filters
-- **Order Management**: Track purchases, sales, and rental history
-
-### 💳 Secure Payments
-- **Stripe Integration**: Secure payment processing
-- **Multiple Payment Methods**: Cards, digital wallets, and more
-- **Seller Earnings**: Transparent earnings tracking and payouts
-- **Voucher System**: Discount codes and promotional offers
-
-## 🛠️ Tech Stack
-
-### Frontend
-- **React Native** - Cross-platform mobile development
-- **TypeScript** - Type-safe development
-- **React Navigation** - Navigation management
-- **Expo** - Development and build tooling
-
-### Backend & Services
-- **Supabase** - Database, authentication, and storage
-- **Clerk** - Advanced authentication and user management
-- **Stripe** - Payment processing
-- **Python FastAPI** - AI services and machine learning
-
-### AI & Machine Learning
-- **Computer Vision** - Skin tone analysis and matching
-- **Recommendation Engine** - Personalized fashion suggestions
-- **Size Prediction** - Body measurement analysis
-- **Image Processing** - Product image optimization
-
-## 🚀 Getting Started
-
-### Prerequisites
-- Node.js 18+ 
-- React Native development environment
-- iOS Simulator or Android Emulator
-- Supabase account
-- Stripe account (for payments)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/stylesync.git
-   cd stylesync
-   ```
-
-2. **Install dependencies**
-   ```bash
-   # Main app dependencies
-   npm install
-   
-   # AI API dependencies
-   cd stylesync/ai_api
-   pip install -r requirements.txt
-   cd ../..
-   ```
-
-3. **Environment Setup**
-   
-   Create `.env` file in the root directory:
-   ```env
-   # Supabase Configuration
-   SUPABASE_URL=your_supabase_url
-   SUPABASE_ANON_KEY=your_supabase_anon_key
-   SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-   
-   # Clerk Authentication
-   CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
-   
-   # Stripe Payments
-   STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
-   STRIPE_SECRET_KEY=your_stripe_secret_key
-   ```
-
-4. **Database Setup**
-
-| table_name             |
-| ---------------------- |
-| cart_items             |
-| carts                  |
-| deliveries             |
-| detailed_fashion_items |
-| fashion_items          |
-| order_items            |
-| orders                 |
-| payments               |
-| product_likes          |
-| products               |
-| roles                  |
-| seller_earnings        |
-| seller_profiles        |
-| user_addresses         |
-| user_interactions      |
-| users                  |
-
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
    
    Run the SQL migrations in your Supabase dashboard:
    ```sql

@@ -220,7 +220,188 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 | public       | update\_updated\_at\_column | `sql CREATE OR REPLACE FUNCTION public.update_updated_at_column() RETURNS trigger LANGUAGE plpgsql AS $function$ BEGIN NEW.updated_at = NOW(); RETURN NEW; END; $function$ `                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 4. **Stripe Setup**
+   
+To enable secure payment processing with Stripe in your Supabase Edge Functions:
 
+### 4.1 Configure Stripe Secrets in Supabase
+In your **Supabase Project Settings → Secrets**, add:
+STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
+STRIPE_SECRET_KEY=your_stripe_secret_key
+STRIPE_WEBHOOK_SECRET=your_webhook_secret
+SUPABASE_URL=your_supabase_url
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+---
+
+### 4.2 Create Shared Utility Files for Edge Functions
+
+Inside your Edge Functions folder (e.g., `supabase/functions/_shared/`), create:
+
+**`stripe.ts`**
+```
+// @deno-types="npm:@types/stripe"
+import Stripe from 'https://esm.sh/stripe@12.18.0';
+
+export const stripe = new Stripe(Deno.env.get('STRIPE_SECRET_KEY') || '', {
+  apiVersion: '2023-10-16',
+  httpClient: Stripe.createFetchHttpClient()
+});
+```
+**`cors.ts`**
+```
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, stripe-signature',
+  'Access-Control-Allow-Methods': 'POST, OPTIONS'
+};
+```
+### 4.3 Create the Payment Intent Edge Function
+
+```
+import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { stripe } from '../_shared/stripe.ts';
+import { corsHeaders } from '../_shared/cors.ts';
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
+
+  try {
+    const { amount, currency, productId, userId } = await req.json();
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: Math.round(amount * 100),
+      currency,
+      metadata: {
+        productId: productId.toString(),
+        userId
+      },
+      automatic_payment_methods: { enabled: true }
+    });
+
+    return new Response(JSON.stringify({
+      publishableKey: Deno.env.get('STRIPE_PUBLISHABLE_KEY'),
+      clientSecret: paymentIntent.client_secret
+    }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+
+  } catch (error) {
+    return new Response(JSON.stringify({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }), {
+      status: 400,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
+});
+```
+### 4.4 Create the Web Hook Edge Function
+```
+
+import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
+import { stripe } from '../_shared/stripe.ts';
+import { corsHeaders } from '../_shared/cors.ts';
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
+
+serve(async (req) => {
+  if (req.method === 'OPTIONS') {
+    return new Response('ok', { headers: corsHeaders });
+  }
+
+  try {
+    const signature = req.headers.get('stripe-signature');
+    if (!signature) throw new Error('No signature found in request');
+
+    const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET');
+    if (!webhookSecret) throw new Error('Webhook secret not configured');
+
+    const body = await req.text();
+    const event = stripe.webhooks.constructEvent(body, signature, webhookSecret);
+
+    const supabaseUrl = Deno.env.get('SUPABASE_URL');
+    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
+    if (!supabaseUrl || !supabaseServiceKey) throw new Error('Supabase credentials not configured');
+
+    const supabase = createClient(supabaseUrl, supabaseServiceKey);
+
+    switch (event.type) {
+      case 'payment_intent.succeeded': {
+        const paymentIntent = event.data.object;
+        const { metadata } = paymentIntent;
+
+        await supabase.from('payments').update({
+          payment_status: 'completed',
+          paid_at: new Date().toISOString(),
+          stripe_payment_id: paymentIntent.id
+        }).eq('user_id', metadata.userId).eq('payment_status', 'pending');
+
+        await supabase.from('orders').update({
+          order_status: 'processing',
+          payment_status: 'paid'
+        }).eq('user_id', metadata.userId).eq('payment_status', 'pending');
+        break;
+      }
+
+      case 'payment_intent.payment_failed': {
+        const paymentIntent = event.data.object;
+        const { metadata } = paymentIntent;
+
+        await supabase.from('payments').update({
+          payment_status: 'failed',
+          stripe_payment_id: paymentIntent.id
+        }).eq('user_id', metadata.userId).eq('payment_status', 'pending');
+
+        await supabase.from('orders').update({
+          order_status: 'cancelled',
+          payment_status: 'failed'
+        }).eq('user_id', metadata.userId).eq('payment_status', 'pending');
+        break;
+      }
+
+      case 'charge.refunded': {
+        const charge = event.data.object;
+        const paymentIntentId = charge.payment_intent;
+
+        const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+        const { metadata } = paymentIntent;
+
+        await supabase.from('payments').update({
+          payment_status: 'refunded',
+          refunded_at: new Date().toISOString()
+        }).eq('stripe_payment_id', paymentIntentId);
+
+        await supabase.from('orders').update({
+          order_status: 'refunded',
+          payment_status: 'refunded'
+        }).eq('user_id', metadata.userId).eq('payment_status', 'paid');
+        break;
+      }
+    }
+
+    return new Response(JSON.stringify({ received: true }), {
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+
+  } catch (error) {
+    return new Response(JSON.stringify({
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }), {
+      status: 400,
+      headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+    });
+  }
+});
+```
+
+### 4.5 Deploy Edge Functions
+
+From your project root:
+```
+supabase functions deploy payment-intent
+supabase functions deploy stripe-webhook
+```
 
 
 ## Key Screens

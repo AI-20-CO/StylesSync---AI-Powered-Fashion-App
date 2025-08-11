@@ -545,20 +545,6 @@ $function$
    uvicorn main:app --reload
    ```
 
-## 📱 App Structure
-
-```
-stylesync/
-├── app/                    # React Native screens
-│   ├── Tabs/              # Main tab screens (Home, P2P, AI, etc.)
-│   ├── Auth/              # Authentication screens
-│   └── Components/        # Reusable UI components
-├── backend/               # Backend utilities and API calls
-├── context/               # React Context providers
-├── ai_api/               # Python AI services
-├── assets/               # Images and static assets
-└── components/           # Shared components
-```
 
 ## Key Screens
 

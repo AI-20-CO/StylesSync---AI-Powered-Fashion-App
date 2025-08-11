@@ -31,24 +31,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
   - [AI Services](#ai-services)
 - [Contributing](#contributing)
 
-| table_name             |
-| ---------------------- |
-| cart_items             |
-| carts                  |
-| deliveries             |
-| detailed_fashion_items |
-| fashion_items          |
-| order_items            |
-| orders                 |
-| payments               |
-| product_likes          |
-| products               |
-| roles                  |
-| seller_earnings        |
-| seller_profiles        |
-| user_addresses         |
-| user_interactions      |
-| users                  |
+
 
 | create_statement                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -523,6 +506,26 @@ $function$
    ```
 
 4. **Database Setup**
+
+| table_name             |
+| ---------------------- |
+| cart_items             |
+| carts                  |
+| deliveries             |
+| detailed_fashion_items |
+| fashion_items          |
+| order_items            |
+| orders                 |
+| payments               |
+| product_likes          |
+| products               |
+| roles                  |
+| seller_earnings        |
+| seller_profiles        |
+| user_addresses         |
+| user_interactions      |
+| users                  |
+
    
    Run the SQL migrations in your Supabase dashboard:
    ```sql
@@ -530,7 +533,7 @@ $function$
    -- (Include your database schema here)
    ```
 
-5. **Start the application**
+6. **Start the application**
    ```bash
    # Start Metro bundler
    npx react-native start

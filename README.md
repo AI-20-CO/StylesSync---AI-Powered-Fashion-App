@@ -32,7 +32,7 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [Contributing](#contributing)                                                                                                                                                                                                                                                                                      
 ## Demo
 
-[Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
+[▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 
 ## Features
 

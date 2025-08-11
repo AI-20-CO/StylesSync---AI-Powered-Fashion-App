@@ -424,7 +424,9 @@ supabase functions deploy payment-intent
 supabase functions deploy stripe-webhook
 ```
 
-## Key Screens
+## Key Screens 
+
+[▶️ Watch Demo on YouTube](https://youtu.be/KfduQByZijQ)
 
 - **Home**: AI-powered fashion recommendations
 - **P2P Marketplace**: Buy/sell pre-owned items

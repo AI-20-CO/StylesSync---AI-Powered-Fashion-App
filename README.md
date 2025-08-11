@@ -25,9 +25,6 @@ StylesSync is a comprehensive fashion platform that revolutionizes how people di
 - [API Integration](#api-integration)
   - [Supabase Schema](#supabase-schema)
   - [External APIs](#external-apis)
-- [Deployment](#deployment)
-  - [Mobile App](#mobile-app)
-  - [AI Services](#ai-services)
 - [Contributing](#contributing)                                                                                                                                                                                                                                                                                      
 ## Demo
 
@@ -586,23 +583,6 @@ $function$
 - Clerk for user management
 - Custom AI APIs for ML features
 
-## Deployment
-
-### Mobile App
-```bash
-# Build for iOS
-npx react-native build-ios
-
-# Build for Android
-npx react-native build-android
-```
-
-### AI Services
-```bash
-# Deploy to cloud platform of choice
-# Configure environment variables
-# Set up domain and SSL
-```
 
 ## Contributing
 

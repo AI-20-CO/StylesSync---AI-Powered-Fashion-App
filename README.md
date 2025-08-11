@@ -225,13 +225,13 @@ To enable secure payment processing with Stripe in your Supabase Edge Functions:
 
 ### 4.1 Configure Stripe Secrets in Supabase
 In your **Supabase Project Settings → Secrets**, add:
+```
 STRIPE_PUBLISHABLE_KEY=your_stripe_publishable_key
 STRIPE_SECRET_KEY=your_stripe_secret_key
 STRIPE_WEBHOOK_SECRET=your_webhook_secret
 SUPABASE_URL=your_supabase_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-
----
+```
 
 ### 4.2 Create Shared Utility Files for Edge Functions
 

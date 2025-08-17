@@ -281,7 +281,7 @@ export const corsHeaders = {
 ```
 ### 4.3 Create the Payment Intent Edge Function
 
-```
+```javascript
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { stripe } from '../_shared/stripe.ts';
 import { corsHeaders } from '../_shared/cors.ts';
@@ -322,7 +322,7 @@ serve(async (req) => {
 });
 ```
 ### 4.4 Create the Web Hook Edge Function
-```
+```javascript
 
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { stripe } from '../_shared/stripe.ts';
